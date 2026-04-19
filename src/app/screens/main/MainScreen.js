@@ -1,4 +1,3 @@
-import { FancyButton } from "@pixi/ui";
 import { animate } from "motion";
 import { Container, Sprite, Texture, TilingSprite } from "pixi.js";
 
@@ -60,7 +59,8 @@ export class MainScreen extends Container {
     this._ctaText.x = width * ctaTextRatioX;
     this._ctaText.y = height * ctaTextRatioY;
 
-    const { width: gameFieldWidth, height: gameFieldHeight } = this._gameField.getBounds();
+    const { width: gameFieldWidth, height: gameFieldHeight } =
+      this._gameField.getBounds();
     const gameFieldRatioX = isWideScreen ? 0.65 : 0.5;
     let scale = Math.max(Math.min(1, 0.5 / ratio), 0.8);
     scale = isWideScreen ? 1 : scale;
@@ -96,10 +96,10 @@ export class MainScreen extends Container {
   }
 
   _createBg() {
-    const bg = this._bg = new TilingSprite({
+    const bg = (this._bg = new TilingSprite({
       texture: Texture.from("back.png"),
       anchor: 0.5,
-    });
+    }));
     this.addChild(bg);
   }
 
@@ -110,15 +110,15 @@ export class MainScreen extends Container {
   }
 
   onCtaButtonPress() {
-    EventManager.getInstance().emit(GameEventType.CTA_BUTTON_PRESSED);
+    EventManager.getInstance().emit(GAME_EVENTS.CTA_BUTTON_PRESSED);
   }
 
   _createCTAText() {
-    const ctaText = this._ctaText = new Sprite({
+    const ctaText = (this._ctaText = new Sprite({
       texture: Texture.from("CTA.png"),
       anchor: 0.5,
       scale: 1,
-    });
+    }));
     this.addChild(ctaText);
   }
 
@@ -134,14 +134,15 @@ export class MainScreen extends Container {
   }
 
   _animateCTA(item) {
-    animate(item,
+    animate(
+      item,
       { scale: [1, 1.1, 1] },
       {
         duration: 0.5,
         ease: "easeInOut",
         bounce: 0.25,
         repeat: 1,
-        repeatType: "reverse"
+        repeatType: "reverse",
       },
     );
   }

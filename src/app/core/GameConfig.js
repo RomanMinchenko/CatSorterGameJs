@@ -21,7 +21,7 @@ export const GAME_CONFIG = {
         ["orange", "green", "blue", "pink"],
         ["orange", "green", "blue", "pink", "yellow"],
         ["orange", "green", "blue", "pink", "yellow", "white"],
-      ]
-    }
-  }
+      ],
+    },
+  },
 };

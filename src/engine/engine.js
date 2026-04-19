@@ -26,10 +26,7 @@ export class CreationEngine extends Application {
     Assets.backgroundLoadBundle(allBundles);
   }
 
-  destroy(
-    rendererDestroyOptions = false,
-    options = false,
-  ) {
+  destroy(rendererDestroyOptions = false, options = false) {
     document.removeEventListener("visibilitychange", this.visibilityChange);
     super.destroy(rendererDestroyOptions, options);
   }

@@ -11,34 +11,28 @@ export class CreationResizePlugin {
   static init(options) {
     const app = this;
 
-    Object.defineProperty(
-      app,
-      "resizeTo",
-      {
-        set(dom) {
-          globalThis.removeEventListener("resize", app.queueResize);
-          this._resizeTo = dom;
-          if (dom) {
-            globalThis.addEventListener("resize", app.queueResize);
-            app.resize();
-          }
-        },
-        get() {
-          return this._resizeTo;
-        },
+    Object.defineProperty(app, "resizeTo", {
+      set(dom) {
+        globalThis.removeEventListener("resize", app.queueResize);
+        this._resizeTo = dom;
+        if (dom) {
+          globalThis.addEventListener("resize", app.queueResize);
+          app.resize();
+        }
       },
-    );
+      get() {
+        return this._resizeTo;
+      },
+    });
 
     app.queueResize = () => {
-      if (!this._resizeId) {
+      if (!this._resizeTo) {
         return;
       }
 
       this._cancelResize();
 
-      this._resizeId = requestAnimationFrame(() => {
-        app.resize();
-      });
+      this._resizeId = requestAnimationFrame(() => app.resize());
     };
 
     app.resize = () => {
@@ -56,6 +50,7 @@ export class CreationResizePlugin {
         canvasHeight = globalThis.innerHeight;
       } else {
         const { clientWidth, clientHeight } = this._resizeTo;
+
         canvasWidth = clientWidth;
         canvasHeight = clientHeight;
       }
@@ -63,14 +58,13 @@ export class CreationResizePlugin {
       const { width, height } = resize(
         canvasWidth,
         canvasHeight,
-        app.resizeOptions.width,
-        app.resizeOptions.height,
+        app.resizeOptions.minWidth,
+        app.resizeOptions.minHeight,
         app.resizeOptions.letterbox,
       );
 
       app.renderer.canvas.style.width = `${canvasWidth}px`;
       app.renderer.canvas.style.height = `${canvasHeight}px`;
-
       window.scrollTo(0, 0);
 
       app.renderer.resize(width, height);

@@ -39,7 +39,11 @@ export default class GameField extends Container {
         this._shelves[rowIndex] = [];
       }
 
-      for (let shelfIndex = 0; shelfIndex < order[rowIndex].length; shelfIndex++) {
+      for (
+        let shelfIndex = 0;
+        shelfIndex < order[rowIndex].length;
+        shelfIndex++
+      ) {
         const shelfFrame = order[rowIndex][shelfIndex];
         const shelf = new Shelf(shelfFrame);
         const { width, height } = shelf.getBounds();
@@ -116,7 +120,7 @@ export default class GameField extends Container {
     for (const key in this._cats) {
       const cats = this._cats[key];
 
-      const isAllCatsPlacedCorrectly = cats.every(cat => {
+      const isAllCatsPlacedCorrectly = cats.every((cat) => {
         const shelf = cat.getShelf();
         return shelf && shelf.getColor() === cat.getColor();
       });
@@ -133,7 +137,9 @@ export default class GameField extends Container {
   _isAllCatsAsleep() {
     for (const key in this._cats) {
       const cats = this._cats[key];
-      const isAllCatsAsleep = cats.every(cat => cat.getState() === CAT_STATES.SLEEP);
+      const isAllCatsAsleep = cats.every(
+        (cat) => cat.getState() === CAT_STATES.SLEEP,
+      );
 
       if (!isAllCatsAsleep) {
         return false;

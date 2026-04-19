@@ -6,7 +6,7 @@ export class Navigation {
   width = 0;
   height = 0;
   background = null;
-  currentScene = null;
+  currentScreen = null;
   currentPopup = null;
 
   init(app) {
@@ -30,7 +30,7 @@ export class Navigation {
     }
 
     if (screen.resize) {
-      screen.resize();
+      screen.resize(this.width, this.height);
     }
 
     if (screen.update) {
@@ -114,7 +114,7 @@ export class Navigation {
   async dismissPopup() {
     if (!this.currentPopup) return;
     const popup = this.currentPopup;
-    this.currentPopup = undefined;
+    this.currentPopup = null;
     await this._hideAndRemoveScreen(popup);
     if (this.currentScreen) {
       this.currentScreen.interactiveChildren = true;

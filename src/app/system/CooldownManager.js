@@ -5,7 +5,7 @@ export default class CooldownManager {
     this._tasks.add({
       duration: seconds,
       remaining: seconds,
-      callback: callback
+      callback: callback,
     });
   }
 

@@ -1,5 +1,4 @@
 import { ExtensionType } from "pixi.js";
-
 import { Navigation } from "./navigation.js";
 
 export class CreationNavigationPlugin {

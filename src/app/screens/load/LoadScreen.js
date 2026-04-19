@@ -16,16 +16,19 @@ export class LoadScreen extends Container {
   }
 
   async show() {
-    console.log("LoadScreen show");
     this.alpha = 1;
   }
 
   async hide() {
-    await animate(this, { alpha: 0 }, {
-      duration: 0.3,
-      ease: "linear",
-      delay: 1,
-    });
+    await animate(
+      this,
+      { alpha: 0 },
+      {
+        duration: 0.3,
+        ease: "linear",
+        delay: 1,
+      },
+    );
   }
 
   prepare() {
@@ -33,13 +36,13 @@ export class LoadScreen extends Container {
   }
 
   initText() {
-    const text = this._text = new Label({
-        text: "Loading...",
-        style: {
-          fill: 0x4a4a4a,
-          fontSize: 36,
-        },
-    });
+    const text = (this._text = new Label({
+      text: "Loading...",
+      style: {
+        fill: 0x4a4a4a,
+        fontSize: 36,
+      },
+    }));
     text.anchor.set(0.5);
     this.addChild(text);
   }

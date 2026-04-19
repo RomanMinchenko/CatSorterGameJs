@@ -3,13 +3,29 @@ import prettier from "eslint-plugin-prettier/recommended";
 
 export default [
   { ignores: ["dist"] },
+  js.configs.recommended,
   {
-    extends: [js.configs.recommended, prettier],
     files: ["**/*.{js,jsx}"],
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
+      globals: {
+        window: "readonly",
+        document: "readonly",
+      },
     },
     rules: {},
   },
+  {
+    files: ["webpack.config.mjs"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: {
+        process: "readonly",
+        __dirname: "readonly",
+      },
+    },
+  },
+  prettier,
 ];

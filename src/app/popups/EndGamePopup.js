@@ -1,5 +1,11 @@
 import { animate } from "motion";
-import { BlurFilter, Container, NineSliceSprite, Sprite, Texture } from "pixi.js";
+import {
+  BlurFilter,
+  Container,
+  NineSliceSprite,
+  Sprite,
+  Texture,
+} from "pixi.js";
 
 import { engine } from "../getEngine.js";
 import CooldownManager from "../system/CooldownManager.js";
@@ -46,10 +52,14 @@ export class EndGamePopup extends Container {
     const iconInitialY = this._likeIcon.y;
     this._likeIcon.y = -this._likeIcon.height * 0.5;
     this._likeIcon.visible = true;
-    await animate(this._likeIcon, { y: iconInitialY }, {
-      duration: 0.5,
-      ease: "backOut",
-    });
+    await animate(
+      this._likeIcon,
+      { y: iconInitialY },
+      {
+        duration: 0.5,
+        ease: "backOut",
+      },
+    );
   }
 
   prepare() {
@@ -101,14 +111,14 @@ export class EndGamePopup extends Container {
       {
         duration: 0.5,
         ease: "easeIn",
-      }
+      },
     );
   }
 
   _listenSignals() {
     const { _bg, _likeIcon } = this;
 
-    [_bg, _likeIcon].forEach(element => {
+    [_bg, _likeIcon].forEach((element) => {
       element.on("pointerdown", () => {
         this._onWinScreenClick();
       });

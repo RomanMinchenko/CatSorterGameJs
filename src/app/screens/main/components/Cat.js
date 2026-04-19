@@ -1,6 +1,5 @@
 import { animate } from "motion";
 import { Sprite, Texture } from "pixi.js";
-import Shelf from "./Shelf.js";
 import { GAME_EVENTS } from "../../../events/GameEvents.js";
 import EventManager from "../../../../engine/utils/EventManager.js";
 import { getCatFrameNameByColor } from "../../../utils/getFrameNameByColor.js";
@@ -84,14 +83,20 @@ export default class Cat extends Sprite {
           onUpdate: () => {
             const t = obj.t;
             const oneMinusT = 1 - t;
-            this.x = oneMinusT * oneMinusT * startX + 2 * oneMinusT * t * midX + t * t * x;
-            this.y = oneMinusT * oneMinusT * startY + 2 * oneMinusT * t * midY + t * t * y;
+            this.x =
+              oneMinusT * oneMinusT * startX +
+              2 * oneMinusT * t * midX +
+              t * t * x;
+            this.y =
+              oneMinusT * oneMinusT * startY +
+              2 * oneMinusT * t * midY +
+              t * t * y;
           },
           onComplete: () => {
             this._changeState(CAT_STATES.IDLE);
             resolve();
-          }
-        }
+          },
+        },
       );
     });
   }
