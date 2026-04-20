@@ -93,6 +93,7 @@ export default class GameField extends Container {
 
     if (freeShelve) {
       this.disableInput();
+      this.setChildIndex(cat, this.children.length - 1);
       await cat.setToShelf(freeShelve);
       this._updateFilledShelvesWithCats();
     }
