@@ -13,9 +13,6 @@
             "back.png"
           ],
           "src": [
-            "bg/back@0.5x.webp",
-            "bg/back@0.5x.png",
-            "bg/back.webp",
             "bg/back.png"
           ],
           "data": {
@@ -35,9 +32,6 @@
             "cta"
           ],
           "src": [
-            "cta/cta@0.5x.webp.json",
-            "cta/cta@0.5x.png.json",
-            "cta/cta.webp.json",
             "cta/cta.png.json"
           ],
           "data": {
@@ -58,9 +52,6 @@
             "gameplay"
           ],
           "src": [
-            "gameplay/gameplay@0.5x.webp.json",
-            "gameplay/gameplay@0.5x.png.json",
-            "gameplay/gameplay.webp.json",
             "gameplay/gameplay.png.json"
           ],
           "data": {
@@ -81,9 +72,6 @@
             "ui"
           ],
           "src": [
-            "ui/ui@0.5x.webp.json",
-            "ui/ui@0.5x.png.json",
-            "ui/ui.webp.json",
             "ui/ui.png.json"
           ],
           "data": {

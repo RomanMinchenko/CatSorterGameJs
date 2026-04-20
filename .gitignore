@@ -22,3 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+dist-inline
+src/manifest.inline.generated.js
